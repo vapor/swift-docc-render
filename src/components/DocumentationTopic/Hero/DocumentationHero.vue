@@ -118,8 +118,8 @@ $doc-hero-gradient-background: var(
     var(--color-documentation-intro-fill, var(--color-fill-tertiary))
 ) !default;
 $doc-hero-overlay-background: transparent !default;
-$doc-hero-icon-opacity: 0.15 !default;
-$doc-hero-icon-dark-opacity: 0.15 !default;
+$doc-hero-icon-opacity: 1 !default;
+$doc-hero-icon-dark-opacity: 1 !default;
 $doc-hero-text-color: var(--color-documentation-intro-figure, var(--color-figure-gray)) !default;
 $doc-hero-icon-color: var(
     --color-documentation-intro-accent,
