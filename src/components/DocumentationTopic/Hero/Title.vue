@@ -47,14 +47,30 @@ export default {
 
 .eyebrow {
   @include font-styles(eyebrow-reduced);
-  color: var(--color-documentation-intro-eyebrow,
-    var(--colors-secondary-label, var(--color-secondary-label)));
   display: block;
   margin-bottom: rem(15px);
 }
 
 .title {
   @include font-styles(headline-reduced);
+}
+
+.documentation-hero .eyebrow {
+  color: var(--color-hero-eyebrow,
+    var(--colors-secondary-label, var(--color-secondary-label)));
+}
+
+.documentation-hero .title {
+  color: var(--color-hero-title,
+    var(--colors-header-text, var(--color-header-text)));
+}
+
+.documentation-hero--disabled .eyebrow {
+  color: var(--color-documentation-intro-eyebrow,
+    var(--colors-secondary-label, var(--color-secondary-label)));
+}
+
+.documentation-hero--disabled .title {
   color: var(--color-documentation-intro-title,
     var(--colors-header-text, var(--color-header-text)));
 }
