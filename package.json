@@ -27,7 +27,7 @@
     "core-js": "^3.8.2",
     "css.escape": "^1.5.1",
     "highlight.js": "^11.3.1",
-    "intersection-observer": "0.12.0",
+    "intersection-observer": "0.12.2",
     "portal-vue": "2.1.7",
     "vue-i18n": "^8.28.2",
     "vue-virtual-scroller": "^1.1.2"
@@ -47,13 +47,13 @@
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-vue": "^8.0.3",
     "eslint-plugin-vuejs-accessibility": "^1.1.0",
-    "html-loader": "^4.2.0",
+    "html-loader": "^5.1.0",
     "jest": "^27.0.5",
     "sass": "^1.55.0",
-    "sass-loader": "^12.0.0",
-    "tree-sitter": "^0.21.1",
-    "tree-sitter-javascript": "^0.23.1",
-    "tree-sitter-jsdoc": "^0.23.2",
+    "sass-loader": "^16.0.7",
+    "tree-sitter": "^0.25.0",
+    "tree-sitter-javascript": "^0.25.0",
+    "tree-sitter-jsdoc": "^0.25.0",
     "tree-sitter-vue": "^0.2.1",
     "vue": "^2.7.10",
     "vue-router": "^3.5.2",
@@ -73,6 +73,8 @@
     },
     "cross-spawn": "^7.0.3",
     "postcss": "^8.4.31",
-    "webpack-dev-server": "^5.2.1"
+    "webpack-dev-server": "^5.2.1",
+    "serialize-javascript": "^7.0.3",
+    "@tootallnate/once": "^3.0.1"
   }
 }

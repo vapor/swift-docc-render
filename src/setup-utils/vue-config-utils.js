@@ -32,6 +32,10 @@ function baseGenerateCssOptions(config) {
     loaderOptions: {
       scss: {
         additionalData: `$build-target: '${buildTarget}'; $is-target-ide: $build-target == 'ide';`,
+         sassOptions: {
+          silenceDeprecations: ["import", "if-function", "global-builtin", "color-functions", "slash-div"],
+          quietDeps: true,
+        },
       },
     },
     ...config,
