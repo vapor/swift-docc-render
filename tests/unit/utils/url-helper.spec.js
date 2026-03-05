@@ -9,10 +9,12 @@
 */
 
 import TechnologiesQueryParams from 'docc-render/constants/TechnologiesQueryParams';
+import QuickNavigationQueryParams from 'docc-render/constants/QuickNavigationQueryParams';
 
 let areEquivalentLocations;
 let buildUrl;
 let resolveAbsoluteUrl;
+let isAbsoluteUrl;
 
 const normalizePathMock = jest.fn().mockImplementation(n => n);
 
@@ -29,6 +31,7 @@ function importDeps() {
     areEquivalentLocations,
     buildUrl,
     resolveAbsoluteUrl,
+    isAbsoluteUrl,
   // eslint-disable-next-line global-require
   } = require('@/utils/url-helper'));
 }
@@ -72,13 +75,16 @@ describe('areEquivalentLocations', () => {
     })).toBe(true);
   });
 
-  it('returns true for the same route, path, all queries but changes query', () => {
+  it('returns true for the same route, path, all queries but excluded param changes', () => {
     expect(areEquivalentLocations({
       name: 'foo',
       path: '/bar',
       query: {
         param: 'value',
         changes: 'a value',
+        [TechnologiesQueryParams.tags]: 'a,b,c',
+        [TechnologiesQueryParams.input]: 'foo',
+        [QuickNavigationQueryParams.query]: 'search term',
       },
     }, {
       name: 'foo',
@@ -86,24 +92,6 @@ describe('areEquivalentLocations', () => {
       query: {
         param: 'value',
         changes: 'a different value',
-      },
-    })).toBe(true);
-  });
-
-  it('returns true for the same route, path, all queries but input or tags changes', () => {
-    expect(areEquivalentLocations({
-      name: 'foo',
-      path: '/bar',
-      query: {
-        param: 'value',
-        [TechnologiesQueryParams.tags]: 'a,b,c',
-        [TechnologiesQueryParams.input]: 'foo',
-      },
-    }, {
-      name: 'foo',
-      path: '/bar',
-      query: {
-        param: 'value',
         [TechnologiesQueryParams.tags]: 'c,d,e',
         [TechnologiesQueryParams.input]: 'bar',
       },
@@ -183,5 +171,37 @@ describe('resolveAbsoluteUrl', () => {
       .toBe('https://swift.org/foobar');
     expect(resolveAbsoluteUrl('foo/bar', 'https://swift.org/blah'))
       .toBe('https://swift.org/foo/bar');
+  });
+});
+
+describe('isAbsoluteUrl', () => {
+  beforeEach(() => {
+    importDeps();
+    jest.clearAllMocks();
+  });
+
+  it('returns true for absolute URLs', () => {
+    expect(isAbsoluteUrl('https://example.com')).toBe(true);
+    expect(isAbsoluteUrl('https://example.com/path')).toBe(true);
+  });
+
+  it('returns true for other protocol schemes', () => {
+    expect(isAbsoluteUrl('mailto:test@example.com')).toBe(true);
+    expect(isAbsoluteUrl('tel:+1234567890')).toBe(true);
+  });
+
+  it('returns false for relative paths starting with /', () => {
+    expect(isAbsoluteUrl('/relative/path')).toBe(false);
+    expect(isAbsoluteUrl('/')).toBe(false);
+  });
+
+  it('returns false for relative paths not starting with /', () => {
+    expect(isAbsoluteUrl('relative/path')).toBe(false);
+    expect(isAbsoluteUrl('./current/path')).toBe(false);
+  });
+
+  it('returns false for empty or invalid URLs', () => {
+    expect(isAbsoluteUrl('')).toBe(false);
+    expect(isAbsoluteUrl('not-a-valid-url')).toBe(false);
   });
 });

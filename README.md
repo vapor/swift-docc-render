@@ -3,19 +3,19 @@
 Swift-DocC-Render is a web Single Page Application (SPA) powered by [Vue.js](https://vuejs.org/) for creating rich code documentation websites. Pages and content are generated using render JSON data from DocC. It comes with a well suited design for documentation websites.
 SPAs are web apps that render dynamically at runtime entirely in the browser, using JavaScript.
 
-[Swift-DocC](https://github.com/apple/swift-docc) is a tool for building and previewing documentation, aimed at making it easy to generate reference documentation from frameworks and packages, as well as free-form articles and tutorials authored in Markdown. It produces a folder in the Documentation Archive format (extension `.doccarchive`), which contains a machine-readable output of the documentation as JSON data that Swift-DocC-Render uses to produce rendered documentation.
+[Swift-DocC](https://github.com/swiftlang/swift-docc) is a tool for building and previewing documentation, aimed at making it easy to generate reference documentation from frameworks and packages, as well as free-form articles and tutorials authored in Markdown. It produces a folder in the Documentation Archive format (extension `.doccarchive`), which contains a machine-readable output of the documentation as JSON data that Swift-DocC-Render uses to produce rendered documentation.
 
 ## Getting Started
 
-> Note: requires [Node.js](https://nodejs.org/en/download/) v18
-> and [npm](https://www.npmjs.com/package/npm) v9.5. An easy way to set these up is to install
+> Note: requires [Node.js](https://nodejs.org/en/download/) v22.17.0
+> and [npm](https://www.npmjs.com/package/npm) v10.9.2. An easy way to set these up is to install
 > [nvm](https://github.com/nvm-sh/nvm) and run `nvm install` from within the Swift-DocC-Render
 > repository. To use these versions as the default, add `--default` to the installation command.
 
 1. **Download this repository and go to its folder**
 
     ```shell
-    git clone https://github.com/apple/swift-docc-render.git
+    git clone https://github.com/swiftlang/swift-docc-render.git
     cd swift-docc-render
     ```
 
@@ -37,7 +37,7 @@ SPAs are web apps that render dynamically at runtime entirely in the browser, us
 
 ## Using Swift-DocC-Render to render documentation
 
-Follow [these steps](https://github.com/apple/swift-docc#using-docc-to-build-and-preview-documentation) to generate a documentation archive, set the path to your renderer and render locally your documentation using Swift-DocC-Render.
+Follow [these steps](https://github.com/swiftlang/swift-docc#using-docc-to-build-and-preview-documentation) to generate a documentation archive, set the path to your renderer and render locally your documentation using Swift-DocC-Render.
 
 ## Rendering and building docs
 
@@ -51,7 +51,7 @@ To build the docs, run `npm run docs:build`.
 
 ### Submitting a Bug Report
 
-Swift-DocC-Render tracks all bug reports with [GitHub](https://github.com/apple/swift-docc-render/issues).
+Swift-DocC-Render tracks all bug reports with [GitHub](https://github.com/swiftlang/swift-docc-render/issues).
 When you submit a bug report we ask that you follow the
 Swift [Bug Reporting](https://swift.org/contributing/#reporting-bugs) guidelines
 and provide as many details as possible.
@@ -63,7 +63,7 @@ that will help us track down the bug faster.
 ### Submitting a Feature Request
 
 For feature requests, please feel free to create an issue
-on [GitHub](https://github.com/apple/swift-docc-render/issues/new?assignees=&labels=New+Feature&projects=&template=FEATURE_REQUEST.yml) with the `New Feature` type
+on [GitHub](https://github.com/swiftlang/swift-docc-render/issues/new?assignees=&labels=New+Feature&projects=&template=FEATURE_REQUEST.yml) with the `New Feature` type
 or start a discussion on the [Swift Forums](https://forums.swift.org/c/development/swift-docc).
 
 Don't hesitate to submit a feature request if you see a way

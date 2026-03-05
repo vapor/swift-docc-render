@@ -10,6 +10,7 @@
 
 import { normalizePath } from 'docc-render/utils/assets';
 import TechnologiesQueryParams from 'docc-render/constants/TechnologiesQueryParams';
+import QuickNavigationQueryParams from 'docc-render/constants/QuickNavigationQueryParams';
 
 export function queryStringForParams(params = {}) {
   return Object.entries(params).reduce((pairs, [name, value]) => (
@@ -36,7 +37,7 @@ export function buildUrl(url, { changes, language, context } = {}) {
 // Whether the given routes are equivalent.
 //
 // Routes are considered equivalent if they have the same name, path, and query parameters, with the
-// exception of `changes`,`input` and `tags` query parameters,
+// exception of `changes`, `input`, `tags`, and `q` query parameters,
 // which are not considered in the equivalency.
 export function areEquivalentLocations(routeA, routeB) {
   // Remove the aforementioned query parameters because they're not considered in equivalency.
@@ -45,6 +46,7 @@ export function areEquivalentLocations(routeA, routeB) {
       changes: routeAChanges,
       [TechnologiesQueryParams.input]: technologiesAQuery,
       [TechnologiesQueryParams.tags]: technologiesATags,
+      [QuickNavigationQueryParams.query]: routeAQ,
       ...routeAQuery
     } = {},
   } = routeA;
@@ -54,6 +56,7 @@ export function areEquivalentLocations(routeA, routeB) {
       changes: routeBChanges,
       [TechnologiesQueryParams.input]: technologiesBQuery,
       [TechnologiesQueryParams.tags]: technologiesBTags,
+      [QuickNavigationQueryParams.query]: routeBQ,
       ...routeBQuery
     } = {},
   } = routeB;
@@ -107,4 +110,25 @@ export function getAbsoluteUrl(path, domainPath = window.location.href) {
  */
 export function resolveAbsoluteUrl(path, domainPath) {
   return getAbsoluteUrl(path, domainPath).href;
+}
+
+/**
+ * Check if a URL is absolute (has a protocol scheme).
+ *
+ * @param {string} url - The URL to check.
+ * @return {boolean} True if the URL is absolute, false if relative.
+ *
+ * @example
+ * isAbsoluteUrl('https://example.com/path') // true
+ * isAbsoluteUrl('/relative/path') // false
+ * isAbsoluteUrl('relative/path') // false
+ */
+export function isAbsoluteUrl(url) {
+  try {
+    // eslint-disable-next-line no-new
+    new URL(url);
+    return true;
+  } catch (e) {
+    return false;
+  }
 }
